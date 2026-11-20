@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Diya ❤️</title>
 
 <style>
@@ -16,345 +17,371 @@
 body {
     min-height: 100vh;
     overflow-x: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #633c83, #24152f 55%, #100b19);
+    background: radial-gradient(circle at top, #54245f, #160d2c 65%, #080817);
     color: white;
-    perspective: 1000px;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
 }
+
+/* Background stars */
 
 .stars {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    overflow: hidden;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(#ff9ed2 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 0 0, 40px 60px;
+    opacity: 0.35;
+    animation: starsMove 25s linear infinite;
 }
 
-.star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 2s infinite alternate;
+@keyframes starsMove {
+    to {
+        background-position: 300px 300px, 200px 200px;
+    }
 }
 
-@keyframes twinkle {
-    from { opacity: .2; transform: scale(.6); }
-    to { opacity: 1; transform: scale(1.5); }
-}
+/* Main container */
 
 .container {
+    position: relative;
+    z-index: 2;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 30px 15px;
+    justify-content: center;
+    padding: 35px 18px;
 }
 
-.card {
-    width: min(430px, 95vw);
-    padding: 35px 25px;
-    text-align: center;
-    border-radius: 30px;
-    background: linear-gradient(145deg,
-        rgba(255,255,255,.16),
-        rgba(255,255,255,.04));
-    border: 1px solid rgba(255,255,255,.25);
-    box-shadow: 0 25px 70px rgba(0,0,0,.4),
-                0 0 35px rgba(255,100,190,.2);
-    backdrop-filter: blur(15px);
-    transform-style: preserve-3d;
-    animation: entrance 1.5s ease;
-}
+/* Heading */
 
-@keyframes entrance {
-    from {
-        opacity: 0;
-        transform: rotateX(15deg) translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: rotateX(0) translateY(0);
-    }
+.small-heading {
+    color: #ffc5e4;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    color: #ffd3ec;
-    font-size: clamp(30px, 8vw, 42px);
-    text-shadow: 0 0 20px #ff65b5;
-    margin-bottom: 10px;
+    color: #ff9bd3;
+    font-size: clamp(32px, 8vw, 65px);
+    text-shadow: 0 0 15px #ff4fae,
+                 0 0 35px #ff4fae;
+    animation: headingGlow 2s infinite alternate;
 }
 
-.subtitle {
-    color: #fbd7ee;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
+@keyframes headingGlow {
+    to {
+        text-shadow: 0 0 25px #ff4fae,
+                     0 0 60px #ff4fae;
+    }
 }
 
-.name {
-    font-size: 48px;
-    font-weight: bold;
-    color: #ff9ed1;
-    text-shadow: 0 0 25px #ff55b4;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    to { text-shadow: 0 0 40px #ff35a5; }
-}
-
-/* 3D birthday cake */
+/* 3D cake */
 
 .cake {
-    position: relative;
-    width: 160px;
-    height: 155px;
-    margin: 30px auto;
-    transform-style: preserve-3d;
+    font-size: 90px;
+    margin: 25px 0;
+    display: inline-block;
     animation: cakeFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 15px 15px #ff4fae55);
 }
 
 @keyframes cakeFloat {
-    50% { transform: translateY(-12px) rotateY(8deg); }
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateY(12deg);
+    }
 }
 
-.layer {
-    position: absolute;
-    left: 10px;
-    width: 140px;
-    height: 48px;
-    border-radius: 12px 12px 18px 18px;
-    background: linear-gradient(90deg,#d94c91,#ff9bc9,#d94c91);
-    box-shadow: 0 8px 0 #a83271;
+/* Glass card */
+
+.card {
+    width: 100%;
+    max-width: 650px;
+    padding: 35px 25px;
+    border: 1px solid #ff9bd355;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px #0005,
+                inset 0 0 25px #ff9bd311;
+    transform-style: preserve-3d;
+    animation: cardEnter 1.5s ease;
 }
 
-.layer.one { top: 90px; }
-.layer.two {
-    top: 45px;
-    left: 20px;
-    width: 120px;
-    background: linear-gradient(90deg,#a86bd4,#e5a9ff,#a86bd4);
-    box-shadow: 0 8px 0 #75419f;
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: perspective(800px) rotateX(20deg) translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(800px) rotateX(0deg) translateY(0);
+    }
 }
 
-.candle {
-    position: absolute;
-    top: 5px;
-    left: 77px;
-    width: 8px;
-    height: 40px;
-    background: repeating-linear-gradient(
-        45deg, white 0 5px, #ff69b4 5px 10px
-    );
-    border-radius: 4px;
+/* Animated writing */
+
+#animatedTitle {
+    font-size: clamp(22px, 5vw, 35px);
+    line-height: 1.5;
+    color: #ffd4ed;
+    min-height: 55px;
 }
 
-.flame {
-    position: absolute;
-    top: -17px;
-    left: -4px;
-    width: 16px;
-    height: 22px;
-    background: #ffdf70;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    box-shadow: 0 0 20px #ffb52e;
-    animation: flicker .4s infinite alternate;
+#animatedText {
+    color: #ffffff;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-top: 20px;
+    min-height: 100px;
 }
 
-@keyframes flicker {
-    to { transform: rotate(-40deg) scale(1.2); }
+.cursor {
+    display: inline-block;
+    color: #ff8ac8;
+    animation: blink 0.7s infinite;
 }
 
-.message {
-    color: #ffe6f4;
-    line-height: 1.8;
-    margin: 20px 0;
-    font-size: 16px;
+@keyframes blink {
+    50% { opacity: 0; }
 }
+
+/* Buttons */
 
 button {
-    padding: 15px 27px;
     border: none;
-    border-radius: 40px;
-    color: white;
-    font-size: 16px;
+    outline: none;
+    padding: 14px 28px;
+    margin: 12px 7px;
+    border-radius: 50px;
+    font-size: 15px;
     font-weight: bold;
-    background: linear-gradient(45deg,#ff4d9d,#a855f7);
+    color: white;
     cursor: pointer;
-    box-shadow: 0 0 25px #e65bb4;
-    transition: .3s;
+    background: linear-gradient(135deg, #ff4fae, #a63bdb);
+    box-shadow: 0 5px 25px #ff4fae66;
+    transition: 0.3s;
 }
 
 button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 40px #ff72c2;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 35px #ff4fae99;
 }
 
-.surprise {
-    display: none;
+.buttons {
     margin-top: 25px;
-    padding: 20px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.1);
-    animation: reveal 1s ease;
 }
 
-@keyframes reveal {
-    from { opacity: 0; transform: translateY(20px) scale(.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.surprise h2 {
-    color: #ffafd9;
-    margin-bottom: 12px;
-}
+/* Floating hearts */
 
 .heart {
     position: fixed;
     bottom: -40px;
+    z-index: 1;
     pointer-events: none;
-    animation: floatUp 7s linear forwards;
+    animation: heartFloat linear forwards;
 }
 
-@keyframes floatUp {
+@keyframes heartFloat {
     to {
-        transform: translateY(-115vh) rotate(360deg);
+        transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
     }
 }
 
+/* Footer */
+
 .footer {
-    font-size: 12px;
-    color: #dcb8db;
-    margin-top: 25px;
+    margin-top: 30px;
+    color: #e7b9dc;
+    font-size: 13px;
+}
+
+/* Mobile */
+
+@media(max-width: 600px) {
+    .card {
+        padding: 25px 18px;
+    }
+
+    #animatedText {
+        font-size: 15px;
+    }
+
+    .cake {
+        font-size: 75px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="stars"></div>
 
-<div class="container">
-    <main class="card" id="card">
+<main class="container">
 
-        <p class="subtitle">A LITTLE SURPRISE FOR YOU ✨</p>
+    <p class="small-heading">A SPECIAL SURPRISE FOR YOU ✨</p>
 
-        <h1>Happy Birthday</h1>
+    <h1>Happy Birthday Diya!</h1>
 
-        <div class="name">Diya ❤️</div>
+    <div class="cake">🎂</div>
 
-        <div class="cake">
-            <div class="candle">
-                <div class="flame"></div>
-            </div>
-            <div class="layer two"></div>
-            <div class="layer one"></div>
+    <section class="card">
+
+        <h2 id="animatedTitle"></h2>
+
+        <p id="animatedText"></p>
+
+        <div class="buttons">
+
+            <button onclick="replayMessage()">
+                Read Again ❤️
+            </button>
+
+            <button onclick="celebrate()">
+                More Surprises 🎉
+            </button>
+
         </div>
 
-        <p class="message">
-            Today is all about celebrating someone special.
-            May your day be filled with happiness,
-            beautiful memories and endless smiles! 🌸
-        </p>
+    </section>
 
-        <button onclick="showSurprise()">
-            Open Your Surprise 💌
-        </button>
+    <p class="footer">
+        Made with ❤️ for Diya
+    </p>
 
-        <div class="surprise" id="surprise">
-            <h2>Dear Diya! 💗</h2>
-
-            <p class="message">
-                May every dream you wish for find its way
-                to you. Keep shining, keep smiling and
-                always stay as wonderful as you are.
-
-                <br><br>
-
-                Wishing you a magical birthday and an
-                amazing year ahead! 🎂✨
-
-                <br><br>
-
-                With warm wishes ❤️
-            </p>
-
-            <div style="font-size:35px">🎀 🌷 💖</div>
-        </div>
-
-        <p class="footer">
-            Made with ❤️ and a little bit of code
-        </p>
-
-    </main>
-</div>
+</main>
 
 <script>
 
-// Create magical stars
-const stars = document.getElementById("stars");
+/* Birthday messages */
 
-for (let i = 0; i < 90; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
+const titleMessage = "Dear Diya ❤️";
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.width = (Math.random() * 3 + 1) + "px";
-    star.style.height = star.style.width;
-    star.style.animationDelay = Math.random() * 3 + "s";
+const birthdayMessage =
+"Today is your special day! 🎂 " +
+"May your life always be filled with happiness, " +
+"beautiful memories, endless smiles and wonderful surprises. " +
+"Keep shining and keep being the amazing person you are. " +
+"Wishing you a very Happy Birthday! 💗✨";
 
-    stars.appendChild(star);
+/* Typing animation */
+
+let animationVersion = 0;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Floating hearts
+async function typeMessage(element, text, speed, version) {
+
+    element.textContent = "";
+
+    for (const character of text) {
+
+        if (version !== animationVersion) return;
+
+        element.textContent += character;
+
+        await sleep(speed);
+    }
+}
+
+async function replayMessage() {
+
+    animationVersion++;
+
+    const version = animationVersion;
+
+    const title = document.getElementById("animatedTitle");
+    const message = document.getElementById("animatedText");
+
+    message.textContent = "";
+
+    await typeMessage(title, titleMessage, 110, version);
+
+    if (version !== animationVersion) return;
+
+    await sleep(500);
+
+    await typeMessage(message, birthdayMessage, 45, version);
+}
+
+/* Floating hearts */
+
 function createHeart() {
+
     const heart = document.createElement("div");
 
     heart.className = "heart";
-    heart.innerHTML = ["❤️","💗","💕","💖","✨","🌸"][
-        Math.floor(Math.random() * 6)
-    ];
+
+    const hearts = ["❤️", "💗", "💕", "💖", "✨"];
+
+    heart.textContent =
+        hearts[Math.floor(Math.random() * hearts.length)];
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    const duration = 5 + Math.random() * 5;
+
+    heart.style.animationDuration = duration + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 7000);
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
 }
 
 setInterval(createHeart, 500);
 
-// Surprise reveal
-function showSurprise() {
-    const surprise = document.getElementById("surprise");
+/* Celebration */
 
-    surprise.style.display = "block";
+function celebrate() {
 
-    for (let i = 0; i < 30; i++) {
-        setTimeout(createHeart, i * 100);
+    const emojis = ["🎉", "🎊", "💖", "✨", "🌸", "❤️"];
+
+    for (let i = 0; i < 45; i++) {
+
+        setTimeout(() => {
+
+            const item = document.createElement("div");
+
+            item.className = "heart";
+
+            item.textContent =
+                emojis[Math.floor(Math.random() * emojis.length)];
+
+            item.style.left = Math.random() * 100 + "vw";
+
+            item.style.fontSize = "25px";
+
+            item.style.animationDuration = "4s";
+
+            document.body.appendChild(item);
+
+            setTimeout(() => item.remove(), 4000);
+
+        }, i * 60);
     }
-
-    document.querySelector("button").textContent =
-        "Happy Birthday Diya! ❤️";
 }
 
-// Subtle 3D card movement
-const card = document.getElementById("card");
+/* Start */
 
-document.addEventListener("mousemove", (event) => {
-    if (window.innerWidth < 600) return;
-
-    const x = (window.innerWidth / 2 - event.clientX) / 45;
-    const y = (window.innerHeight / 2 - event.clientY) / 45;
-
-    card.style.transform =
-        `rotateY(${-x}deg) rotateX(${y}deg)`;
-});
-
-document.addEventListener("mouseleave", () => {
-    card.style.transform = "rotateY(0) rotateX(0)";
+window.addEventListener("DOMContentLoaded", () => {
+    replayMessage();
 });
 
 </script>
