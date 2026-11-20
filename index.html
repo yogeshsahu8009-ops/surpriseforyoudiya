@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Diya ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #633c83, #24152f 55%, #100b19);
+    color: white;
+    perspective: 1000px;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.6); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.card {
+    width: min(430px, 95vw);
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 30px;
+    background: linear-gradient(145deg,
+        rgba(255,255,255,.16),
+        rgba(255,255,255,.04));
+    border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 25px 70px rgba(0,0,0,.4),
+                0 0 35px rgba(255,100,190,.2);
+    backdrop-filter: blur(15px);
+    transform-style: preserve-3d;
+    animation: entrance 1.5s ease;
+}
+
+@keyframes entrance {
+    from {
+        opacity: 0;
+        transform: rotateX(15deg) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0) translateY(0);
+    }
+}
+
+h1 {
+    color: #ffd3ec;
+    font-size: clamp(30px, 8vw, 42px);
+    text-shadow: 0 0 20px #ff65b5;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #fbd7ee;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.name {
+    font-size: 48px;
+    font-weight: bold;
+    color: #ff9ed1;
+    text-shadow: 0 0 25px #ff55b4;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    to { text-shadow: 0 0 40px #ff35a5; }
+}
+
+/* 3D birthday cake */
+
+.cake {
+    position: relative;
+    width: 160px;
+    height: 155px;
+    margin: 30px auto;
+    transform-style: preserve-3d;
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+    50% { transform: translateY(-12px) rotateY(8deg); }
+}
+
+.layer {
+    position: absolute;
+    left: 10px;
+    width: 140px;
+    height: 48px;
+    border-radius: 12px 12px 18px 18px;
+    background: linear-gradient(90deg,#d94c91,#ff9bc9,#d94c91);
+    box-shadow: 0 8px 0 #a83271;
+}
+
+.layer.one { top: 90px; }
+.layer.two {
+    top: 45px;
+    left: 20px;
+    width: 120px;
+    background: linear-gradient(90deg,#a86bd4,#e5a9ff,#a86bd4);
+    box-shadow: 0 8px 0 #75419f;
+}
+
+.candle {
+    position: absolute;
+    top: 5px;
+    left: 77px;
+    width: 8px;
+    height: 40px;
+    background: repeating-linear-gradient(
+        45deg, white 0 5px, #ff69b4 5px 10px
+    );
+    border-radius: 4px;
+}
+
+.flame {
+    position: absolute;
+    top: -17px;
+    left: -4px;
+    width: 16px;
+    height: 22px;
+    background: #ffdf70;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 20px #ffb52e;
+    animation: flicker .4s infinite alternate;
+}
+
+@keyframes flicker {
+    to { transform: rotate(-40deg) scale(1.2); }
+}
+
+.message {
+    color: #ffe6f4;
+    line-height: 1.8;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+button {
+    padding: 15px 27px;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(45deg,#ff4d9d,#a855f7);
+    cursor: pointer;
+    box-shadow: 0 0 25px #e65bb4;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px #ff72c2;
+}
+
+.surprise {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.1);
+    animation: reveal 1s ease;
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(20px) scale(.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.surprise h2 {
+    color: #ffafd9;
+    margin-bottom: 12px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    animation: floatUp 7s linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    font-size: 12px;
+    color: #dcb8db;
+    margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+    <main class="card" id="card">
+
+        <p class="subtitle">A LITTLE SURPRISE FOR YOU ✨</p>
+
+        <h1>Happy Birthday</h1>
+
+        <div class="name">Diya ❤️</div>
+
+        <div class="cake">
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+            <div class="layer two"></div>
+            <div class="layer one"></div>
+        </div>
+
+        <p class="message">
+            Today is all about celebrating someone special.
+            May your day be filled with happiness,
+            beautiful memories and endless smiles! 🌸
+        </p>
+
+        <button onclick="showSurprise()">
+            Open Your Surprise 💌
+        </button>
+
+        <div class="surprise" id="surprise">
+            <h2>Dear Diya! 💗</h2>
+
+            <p class="message">
+                May every dream you wish for find its way
+                to you. Keep shining, keep smiling and
+                always stay as wonderful as you are.
+
+                <br><br>
+
+                Wishing you a magical birthday and an
+                amazing year ahead! 🎂✨
+
+                <br><br>
+
+                With warm wishes ❤️
+            </p>
+
+            <div style="font-size:35px">🎀 🌷 💖</div>
+        </div>
+
+        <p class="footer">
+            Made with ❤️ and a little bit of code
+        </p>
+
+    </main>
+</div>
+
+<script>
+
+// Create magical stars
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 90; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.width = (Math.random() * 3 + 1) + "px";
+    star.style.height = star.style.width;
+    star.style.animationDelay = Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = ["❤️","💗","💕","💖","✨","🌸"][
+        Math.floor(Math.random() * 6)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}
+
+setInterval(createHeart, 500);
+
+// Surprise reveal
+function showSurprise() {
+    const surprise = document.getElementById("surprise");
+
+    surprise.style.display = "block";
+
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+
+    document.querySelector("button").textContent =
+        "Happy Birthday Diya! ❤️";
+}
+
+// Subtle 3D card movement
+const card = document.getElementById("card");
+
+document.addEventListener("mousemove", (event) => {
+    if (window.innerWidth < 600) return;
+
+    const x = (window.innerWidth / 2 - event.clientX) / 45;
+    const y = (window.innerHeight / 2 - event.clientY) / 45;
+
+    card.style.transform =
+        `rotateY(${-x}deg) rotateX(${y}deg)`;
+});
+
+document.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateY(0) rotateX(0)";
+});
+
+</script>
+
+</body>
+</html>
